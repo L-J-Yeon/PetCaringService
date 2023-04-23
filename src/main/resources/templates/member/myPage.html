@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal"/>
+</sec:authorize>
+<head>
+    <meta charset="UTF-8">
+    <title>MyPage</title>
+</head>
+<body>
+    <div>
+        <div th:object="${member}">
+            <p th:text="*{name}"></p>
+        </div>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <td>이름</td>
+                    <td>나이</td>
+                    <td>종류</td>
+                    <td>성별</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pet : ${pets}">
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
