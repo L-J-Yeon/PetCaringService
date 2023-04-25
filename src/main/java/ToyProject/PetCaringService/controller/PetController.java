@@ -45,11 +45,11 @@ public class PetController {
     }
 
     @PostMapping(value = "/register")
-    public String registerPet(@Valid PetDto petDto, BindingResult bindingResult, Model model) {
+    public String registerPet(@Valid PetDto petDto, BindingResult bindingResult, Model model, Authentication auth) {
         if (bindingResult.hasErrors()) {
             return "pet/petRegisterForm";
         }
-        Member member = new Member();
+        Member member = this.getMember(auth);
         try {
             Pet pet = Pet.registerPet(petDto, member);
             petService.savePet(pet);

@@ -1,5 +1,7 @@
 package ToyProject.PetCaringService.service;
 
+import ToyProject.PetCaringService.constant.PetGender;
+import ToyProject.PetCaringService.domain.Member;
 import ToyProject.PetCaringService.domain.Pet;
 import ToyProject.PetCaringService.repository.PetRepository;
 import lombok.RequiredArgsConstructor;
