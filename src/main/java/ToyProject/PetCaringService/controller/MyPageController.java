@@ -26,7 +26,10 @@ public class MyPageController {
     @GetMapping
     public String myPage(Authentication auth, Model model) {
         Member member = getMember(auth);
+        List<Pet> petList = member.getPetList();
         model.addAttribute("member", member);
+        model.addAttribute("petListEmpty", petList.isEmpty());
+        model.addAttribute("petList", petList);
         return "member/myPage";
     }
 
