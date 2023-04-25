@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<sec:authorize access="isAuthenticated()">
+  <sec:authentication property="principal" var="principal"/>
+</sec:authorize>
+<head>
+    <meta charset="UTF-8">
+    <title>PetRegisterForm</title>
+</head>
+<body>
+  <div>
+    <form action="/mypage/pet/register" role="form" method="post" th:object="${petDto}">
+        <div>
+            <label th:for="petName">PETNAME</label>
+            <input type="text" th:field="*{petName}" placeholder="PETNAME">
+            <p th:if="${#fields.hasErrors('petName')}" th:errors="*{petName}" style="color:red">Incorrect Data</p>
+        </div>
+        <div>
+            <label th:for="petType">PETTYPE</label>
+            <input type="radio" id="SMALL" th:field="*{petType}" th:value="SMALL">
+            <label for="SMALL">SMALL</label>
+            <input type="radio" id="MIDDLE" th:field="*{petType}" th:value="MIDDLE">
+            <label for="MIDDLE">MIDDLE</label>
+            <input type="radio" id="LARGE" th:field="*{petType}" th:value="LARGE">
+            <label for="LARGE">LARGE</label>
+            <input type="radio" id="CAT" th:field="*{petType}" th:value="CAT">
+            <label for="CAT">CAT</label>
+            <p th:if="${#fields.hasErrors('petType')}" th:errors="*{petType}" style="color:red">Incorrect Data</p>
+        </div>
+        <div>
+            <label th:for="age">AGE</label>
+            <input type="number" th:field="*{age}" placeholder="AGE">
+            <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color:red">Incorrect Data</p>
+        </div>
+        <div>
+            <label th:for="petGender">PETGENDER</label>
+            <input type="radio" id="FEMALE" th:field="*{petGender}" th:value="FEMALE">
+            <label for="FEMALE">FEMALE</label>
+            <input type="radio" id="MALE" th:field="*{petGender}" th:value="MALE">
+            <label for="MALE">MALE</label>
+            <input type="radio" id="FEMALENEUTRALIZATION" th:field="*{petGender}" th:value="FEMALENEUTRALIZATION">
+            <label for="FEMALENEUTRALIZATION">FEMALENEUTRALIZATION</label>
+            <input type="radio" id="MALENEUTRALIZATION" th:field="*{petGender}" th:value="MALENEUTRALIZATION">
+            <label for="MALENEUTRALIZATION">MALENEUTRALIZATION</label>
+            <p th:if="${#fields.hasErrors('petGender')}" th:errors="*{petGender}" style="color:red">Incorrect Data</p>
+        </div>
+        <div>
+            <button type="submit">REGISTER</button>
+        </div>
+    </form>
+  </div>
+</body>
+</html>
