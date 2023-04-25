@@ -2,6 +2,7 @@ package ToyProject.PetCaringService.domain;
 
 import ToyProject.PetCaringService.constant.PetGender;
 import ToyProject.PetCaringService.constant.PetType;
+import ToyProject.PetCaringService.dto.PetDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,8 +27,18 @@ public class Pet {
     private LocalDate regDate;
     private LocalDate updDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "memberId")
     private Member member;
+
+    public static Pet registerPet(PetDto petDto, Member member) {
+        Pet pet = new Pet();
+        pet.setPetName(petDto.getPetName());
+        pet.setPetType(petDto.getPetType());
+        pet.setAge(petDto.getAge());
+        pet.setPetGender(petDto.getPetGender());
+        pet.setMember(member);
+        return pet;
+    }
 
 }

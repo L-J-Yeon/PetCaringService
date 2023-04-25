@@ -10,25 +10,9 @@
 <body>
     <div>
         <div th:object="${member}">
-            <p th:text="*{name}"></p>
+            <p th:text="|*{name}님의 마이 페이지|"></p>
         </div>
-        <div>
-            <table>
-                <thead>
-                <tr>
-                    <td>이름</td>
-                    <td>나이</td>
-                    <td>종류</td>
-                    <td>성별</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="pet : ${pets}">
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <button type="button" onclick="location.href='/mypage/pet/register'">반려동물 등록하기</button>
     </div>
 </body>
 </html>
